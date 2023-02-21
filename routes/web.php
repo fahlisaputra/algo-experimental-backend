@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\CourseController;
+use App\Http\Controllers\API\ModuleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::prefix('/api/v1')->group(function () {
+    Route::get('/courses', [CourseController::class, 'get']);
+    Route::get('/modules', [ModuleController::class, 'get']);
 });
